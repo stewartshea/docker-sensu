@@ -2,6 +2,9 @@ FROM centos:centos7
 
 MAINTAINER Shea Stewart <shea.stewart@arctiq.ca>
 
+
+USER root 
+
 # Basic packages
 RUN yum install -y epel-release \
   && yum clean all \
@@ -17,8 +20,7 @@ RUN yum install -y erlang \
 
 
 ADD config/rabbitmq.config /etc/rabbitmq/
-RUN   systemctl start rabbitmq \
-  && rabbitmq-plugins enable rabbitmq_management
+RUN rabbitmq-plugins enable rabbitmq_management
 
 # Sensu server
 ADD config/sensu.repo /etc/yum.repos.d/
