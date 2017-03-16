@@ -8,8 +8,7 @@ RUN yum install -y epel-release \
   && yum -y install passwd sudo git wget openssl openssh openssh-server openssh-clients 
 
 # Redis
-RUN yum install -y redis \
-    && systemctl start redis 
+RUN yum install -y redis 
 
 # RabbitMQ
 RUN yum install -y erlang \
