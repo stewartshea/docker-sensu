@@ -9,7 +9,7 @@ RUN yum install -y epel-release \
 
 # Redis
 RUN yum install -y redis \
-    && systemctl start redis \ 
+    && systemctl start redis 
 
 # RabbitMQ
 RUN yum install -y erlang \
