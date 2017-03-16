@@ -1,4 +1,4 @@
-FROM centos7
+FROM centos:centos7
 
 MAINTAINER Shea Stewart <shea.stewart@arctiq.ca>
 
