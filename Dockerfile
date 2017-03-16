@@ -10,9 +10,6 @@ RUN yum install -y epel-release \
 # Redis
 RUN yum install -y redis \
     && systemctl start redis \ 
-    && mkdir -p /etc/sensu/conf.d/
-
-ADD config/redis.json /etc/sensu/conf.d/
 
 # RabbitMQ
 RUN yum install -y erlang \
@@ -29,6 +26,7 @@ ADD config/sensu.repo /etc/yum.repos.d/
 RUN yum clean all \ 
   && yum install -y sensu
 ADD config/config.json /etc/sensu/
+ADD config/redis.json /etc/sensu/conf.d/
 
 # uchiwa
 RUN yum install -y uchiwa
