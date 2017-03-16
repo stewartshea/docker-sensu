@@ -3,7 +3,7 @@ FROM centos:centos7
 MAINTAINER Shea Stewart <shea.stewart@arctiq.ca>
 
 # Basic packages
-RUN rpm -Uvh http://download.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-8.noarch.rpm \
+RUN yum install -y epel-release \
   && yum clean all \
   && yum -y install passwd sudo git wget openssl openssh openssh-server openssh-clients 
 
