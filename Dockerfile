@@ -13,8 +13,9 @@ RUN yum install -y redis \
 
 # RabbitMQ
 RUN yum install -y erlang \
-  && rpm --import http://www.rabbitmq.com/rabbitmq-signing-key-public.asc \
-  && rpm -Uvh http://www.rabbitmq.com/releases/rabbitmq-server/v3.6.0/rabbitmq-server-3.6.0-1.noarch.rpm \
+  && rpm --import https://www.rabbitmq.com/rabbitmq-release-signing-key.asc \
+  && wget https://github.com/rabbitmq/rabbitmq-server/releases/download/rabbitmq_v3_6_7/rabbitmq-server-3.6.7-1.el7.noarch.rpm \
+  && yum install -y rabbitmq-server-3.6.7-1.noarch.rpm
 
 
 ADD config/rabbitmq.config /etc/rabbitmq/
