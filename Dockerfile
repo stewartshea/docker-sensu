@@ -9,7 +9,7 @@ USER root
 # Basic packages
 RUN yum install -y epel-release \
   && yum clean all \
-  && yum -y install passwd sudo git wget openssl openssh openssh-server openssh-clients socat git autoreconf
+  && yum -y install passwd sudo git wget openssl openssh openssh-server openssh-clients socat git autoconf
 
 # Redis
 RUN yum install -y redis 
