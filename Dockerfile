@@ -64,5 +64,4 @@ EXPOSE 22 3000 4567 5671 15672
 VOLUME ['/sys/fs/cgroup']
 VOLUME /run /tmp
 
-#CMD ["/usr/bin/supervisord"]
-CMD ['/usr/sbin/init']
+CMD ["/usr/bin/supervisord"]
