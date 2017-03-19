@@ -5,7 +5,6 @@ MAINTAINER Shea Stewart <shea.stewart@arctiq.ca>
 
 USER root 
 
-RUN /usr/sbin/init
 
 # Basic packages
 RUN yum install -y epel-release \
@@ -39,6 +38,7 @@ ADD config/uchiwa.json /etc/sensu/
 RUN wget http://peak.telecommunity.com/dist/ez_setup.py;python ez_setup.py \
   && easy_install supervisor
 ADD config/supervisord.conf /etc/supervisord.conf
+RUN /usr/sbin/init
 
 VOLUME ["/run", "/sys/fs/cgroup", "/sys/fs/cgroup:ro"]
 EXPOSE 22 3000 4567 5671 15672
