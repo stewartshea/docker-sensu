@@ -52,5 +52,6 @@ ADD config/supervisord.conf /etc/supervisord.conf
 EXPOSE 22 3000 4567 5671 15672
 
 ADD scripts/startup.sh /root/startup.sh
+RUN chmod +x /root/startup.sh
 
 CMD ["/bin/sh","-c" ,"/root/startup.sh"]
