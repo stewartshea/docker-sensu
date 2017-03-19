@@ -85,7 +85,11 @@ RUN ln -sf /var/lib/rabbitmq/.erlang.cookie /root/
 
 RUN ln -sf "$RABBITMQ_HOME/plugins" /plugins
 
+ADD rabbitmq.config /etc/rabbitmq/
+
 COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod 777 /usr/local/bin/docker-entrypoint.sh
+
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE 4369 5671 5672 25672
