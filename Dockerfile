@@ -14,13 +14,13 @@ RUN yum install -y epel-release \
 RUN yum install -y redis 
 
 # RabbitMQ
-RUN yum install -y erlang \
-  && rpm --import https://www.rabbitmq.com/rabbitmq-release-signing-key.asc \
-  && rpm -Uvh https://github.com/rabbitmq/rabbitmq-server/releases/download/rabbitmq_v3_6_7/rabbitmq-server-3.6.7-1.el7.noarch.rpm
+#RUN yum install -y erlang \
+#  && rpm --import https://www.rabbitmq.com/rabbitmq-release-signing-key.asc \
+#  && rpm -Uvh https://github.com/rabbitmq/rabbitmq-server/releases/download/rabbitmq_v3_6_7/rabbitmq-server-3.6.7-1.el7.noarch.rpm
 
 
-ADD config/rabbitmq.config /etc/rabbitmq/
-RUN rabbitmq-plugins enable rabbitmq_management
+#ADD config/rabbitmq.config /etc/rabbitmq/
+#RUN rabbitmq-plugins enable rabbitmq_management
 
 # Sensu server
 ADD config/sensu.repo /etc/yum.repos.d/
