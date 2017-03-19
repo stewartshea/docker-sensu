@@ -9,7 +9,7 @@ ENV PKG_CONFIG_PATH=/usr/lib:/usr/local/lib
 # Basic packages
 RUN yum install -y epel-release \
   && yum clean all \
-  && yum -y install passwd sudo git wget openssl openssh openssh-server openssh-clients socat git autoconf automake gcc cmake install yajl-devel install boost boost-devel libselinux-devel libmount-devel
+  && yum -y install passwd sudo git wget openssl openssh openssh-server openssh-clients socat git autoconf automake gcc cmake install yajl-devel install boost boost-devel libselinux-devel libmount-devel golang-github-cpuguy83-go-md2man
 
 # Redis
 RUN yum install -y redis 
