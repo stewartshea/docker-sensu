@@ -7,7 +7,7 @@ USER root
 ENV PKG_CONFIG_PATH=/usr/lib:/usr/local/lib
 
 # Prepare for systemd first
-ENV container docker
+ENV container=docker
 RUN yum -y update; yum clean all
 RUN yum -y install systemd; yum clean all; \
 (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
@@ -62,5 +62,7 @@ ADD config/supervisord.conf /etc/supervisord.conf
 EXPOSE 22 3000 4567 5671 15672
 
 VOLUME ['/sys/fs/cgroup']
+VOLUME /run /tmp
+
 #CMD ["/usr/bin/supervisord"]
-CMD ['/sbin/init']
+CMD ['/usr/sbin/init']
