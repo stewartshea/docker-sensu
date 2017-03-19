@@ -61,5 +61,6 @@ ADD config/supervisord.conf /etc/supervisord.conf
 
 EXPOSE 22 3000 4567 5671 15672
 
+VOLUME ['/sys/fs/cgroup']
 #CMD ["/usr/bin/supervisord"]
 CMD ['/sbin/init']
