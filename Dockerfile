@@ -9,10 +9,17 @@ USER root
 # Basic packages
 RUN yum install -y epel-release \
   && yum clean all \
-  && yum -y install passwd sudo git wget openssl openssh openssh-server openssh-clients socat
+  && yum -y install passwd sudo git wget openssl openssh openssh-server openssh-clients socat git
 
 # Redis
 RUN yum install -y redis 
+
+RUN git clone https://github.com/projectatomic/oci-systemd-hook \ 
+  && cd oci-systemd-hook \
+  && autoreconf -i \
+  && ./configure --libexecdir=/usr/libexec/oci/hooks.d \ 
+  && make \ 
+  && make install
 
 # RabbitMQ
 #RUN yum install -y erlang \
@@ -39,7 +46,6 @@ RUN wget http://peak.telecommunity.com/dist/ez_setup.py;python ez_setup.py \
   && easy_install supervisor
 ADD config/supervisord.conf /etc/supervisord.conf
 
-VOLUME ["/run", "/sys/fs/cgroup", "/sys/fs/cgroup:ro"]
 EXPOSE 22 3000 4567 5671 15672
 
 CMD ["/usr/bin/supervisord"]
