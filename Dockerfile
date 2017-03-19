@@ -4,7 +4,7 @@ MAINTAINER Shea Stewart <shea.stewart@arctiq.ca>
 
 
 USER root 
-
+ENV PKG_CONFIG_PATH=/usr/lib:/usr/local/lib
 
 # Basic packages
 RUN yum install -y epel-release \
