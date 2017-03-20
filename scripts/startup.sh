@@ -1,7 +1,5 @@
 #!/bin/bash
 
-exec /usr/sbin/init
-
 systemctl start sshd
 systemctl start redis
 systemctl start sensu-server

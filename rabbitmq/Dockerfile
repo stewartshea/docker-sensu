@@ -82,15 +82,18 @@ RUN mkdir -p /var/lib/rabbitmq /etc/rabbitmq \
 	&& chmod -R 777 /var/lib/rabbitmq /etc/rabbitmq
 VOLUME /var/lib/rabbitmq
 
+ADD rabbitmq.config /etc/rabbitmq/
+RUN rabbitmq-plugins enable rabbitmq_management
+
 # add a symlink to the .erlang.cookie in /root so we can "docker exec rabbitmqctl ..." without gosu
 RUN ln -sf /var/lib/rabbitmq/.erlang.cookie /root/
 
 RUN ln -sf "$RABBITMQ_HOME/plugins" /plugins
 
-ADD rabbitmq.config /etc/rabbitmq/
 
 COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod 777 /usr/local/bin/docker-entrypoint.sh
+RUN chmod 777 /usr/local/bin/docker-entrypoint.sh \
+    && chmod +x /usr/local/bin/docker-entrypoint.sh
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 
